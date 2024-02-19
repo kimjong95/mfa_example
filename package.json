@@ -1,12 +1,18 @@
 {
-  "name": "career-up",
+  "name": "@career-up/monorepo",
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "dev": "turbo start:live",
+    "build": "turbo build",
+    "serve": "turbo build:start"
   },
   "keywords": [],
   "author": "",
-  "license": "ISC"
+  "license": "ISC",
+  "packageManager": "pnpm@8.10.0+sha1.77d568bacf41eeefd6695a7087c1282433955b5c",
+  "devDependencies": {
+    "turbo": "^1.12.4"
+  }
 }

@@ -12,7 +12,7 @@ importers:
         specifier: ^1.12.4
         version: 1.12.4
 
-  apps/shell:
+  apps/posting:
     dependencies:
       '@career-up/shell-router':
         specifier: workspace:*
@@ -26,6 +26,9 @@ importers:
       react-dom:
         specifier: ^18.2.0
         version: 18.2.0(react@18.2.0)
+      react-router-dom:
+        specifier: ^6.22.1
+        version: 6.22.1(react-dom@18.2.0)(react@18.2.0)
     devDependencies:
       '@babel/core':
         specifier: ^7.15.8
@@ -85,6 +88,85 @@ importers:
         specifier: ^4.3.1
         version: 4.15.1(webpack-cli@4.10.0)(webpack@5.90.3)
 
+  apps/shell:
+    dependencies:
+      '@career-up/shell-router':
+        specifier: workspace:*
+        version: link:../../packages/shell-router
+      '@career-up/ui-kit':
+        specifier: workspace:*
+        version: link:../../packages/ui-kit
+      react:
+        specifier: ^18.2.0
+        version: 18.2.0
+      react-dom:
+        specifier: ^18.2.0
+        version: 18.2.0(react@18.2.0)
+      react-router-dom:
+        specifier: ^6.22.1
+        version: 6.22.1(react-dom@18.2.0)(react@18.2.0)
+    devDependencies:
+      '@babel/core':
+        specifier: ^7.15.8
+        version: 7.23.9
+      '@babel/plugin-transform-runtime':
+        specifier: ^7.15.8
+        version: 7.23.9(@babel/core@7.23.9)
+      '@babel/preset-env':
+        specifier: ^7.15.8
+        version: 7.23.9(@babel/core@7.23.9)
+      '@babel/preset-react':
+        specifier: ^7.14.5
+        version: 7.23.3(@babel/core@7.23.9)
+      '@babel/preset-typescript':
+        specifier: ^7.10.4
+        version: 7.23.3(@babel/core@7.23.9)
+      '@types/react':
+        specifier: ^18.2.0
+        version: 18.2.57
+      '@types/react-dom':
+        specifier: ^18.2.0
+        version: 18.2.19
+      '@types/react-router-dom':
+        specifier: ^5.3.3
+        version: 5.3.3
+      autoprefixer:
+        specifier: ^10.1.0
+        version: 10.4.17(postcss@8.4.35)
+      babel-loader:
+        specifier: ^8.2.2
+        version: 8.3.0(@babel/core@7.23.9)(webpack@5.90.3)
+      css-loader:
+        specifier: ^6.3.0
+        version: 6.10.0(webpack@5.90.3)
+      dotenv-webpack:
+        specifier: ^8.0.1
+        version: 8.0.1(webpack@5.90.3)
+      html-webpack-plugin:
+        specifier: ^5.3.2
+        version: 5.6.0(webpack@5.90.3)
+      postcss:
+        specifier: ^8.2.1
+        version: 8.4.35
+      postcss-loader:
+        specifier: ^4.1.0
+        version: 4.3.0(postcss@8.4.35)(webpack@5.90.3)
+      style-loader:
+        specifier: ^3.3.0
+        version: 3.3.4(webpack@5.90.3)
+      typescript:
+        specifier: ^4.5.2
+        version: 4.9.5
+      webpack:
+        specifier: ^5.57.1
+        version: 5.90.3(webpack-cli@4.10.0)
+      webpack-cli:
+        specifier: ^4.10.0
+        version: 4.10.0(webpack-dev-server@4.15.1)(webpack@5.90.3)
+      webpack-dev-server:
+        specifier: ^4.3.1
+        version: 4.15.1(webpack-cli@4.10.0)(webpack@5.90.3)
+
   packages/shell-router:
     devDependencies:
       '@types/react':
@@ -93,6 +175,9 @@ importers:
       '@types/react-dom':
         specifier: ^18.2.19
         version: 18.2.19
+      '@types/react-router-dom':
+        specifier: ^5.3.3
+        version: 5.3.3
       '@typescript-eslint/eslint-plugin':
         specifier: ^7.0.2
         version: 7.0.2(@typescript-eslint/parser@7.0.2)(eslint@8.56.0)(typescript@5.3.3)
@@ -117,6 +202,9 @@ importers:
       react-dom:
         specifier: ^18.2.0
         version: 18.2.0(react@18.2.0)
+      react-router-dom:
+        specifier: ^6.22.1
+        version: 6.22.1(react-dom@18.2.0)(react@18.2.0)
       typescript:
         specifier: ^5.2.2
         version: 5.3.3
@@ -1851,6 +1939,10 @@ packages:
       fastq: 1.17.1
     dev: true
 
+  /@remix-run/router@1.15.1:
+    resolution: {integrity: sha512-zcU0gM3z+3iqj8UX45AmWY810l3oUmXM7uH4dt5xtzvMhRtYVhKGOmgOd1877dOPPepfCjUv57w+syamWIYe7w==}
+    engines: {node: '>=14.0.0'}
+
   /@rollup/pluginutils@5.1.0:
     resolution: {integrity: sha512-XTIWOPPcpvyKI6L1NHo0lFlCyznUEyPmPY1mc3KpPVDYulHSTvyeLNVW00QTLIAFNhR3kYnJTQHeGqU4M3n09g==}
     engines: {node: '>=14.0.0'}
@@ -2191,6 +2283,10 @@ packages:
       '@types/serve-static': 1.15.5
     dev: true
 
+  /@types/history@4.7.11:
+    resolution: {integrity: sha512-qjDJRrmvBMiTx+jyLxvLfJU7UznFuokDv4f3WRuriHKERccVpFU+8XMQUAbDzoiJCsmexxRExQeMwwCdamSKDA==}
+    dev: true
+
   /@types/html-minifier-terser@6.1.0:
     resolution: {integrity: sha512-oh/6byDPnL1zeNXFrDXFLyZjkr1MsBG667IM792caf1L2UPOOMf65NFzjUH/ltyfwjAGfs1rsX1eftK0jC/KIg==}
     dev: true
@@ -2248,6 +2344,21 @@ packages:
   /@types/react-dom@18.2.19:
     resolution: {integrity: sha512-aZvQL6uUbIJpjZk4U8JZGbau9KDeAwMfmhyWorxgBkqDIEf6ROjRozcmPIicqsUwPUjbkDfHKgGee1Lq65APcA==}
     dependencies:
+      '@types/react': 18.2.57
+    dev: true
+
+  /@types/react-router-dom@5.3.3:
+    resolution: {integrity: sha512-kpqnYK4wcdm5UaWI3fLcELopqLrHgLqNsdpHauzlQktfkHL3npOSwtj1Uz9oKBAzs7lFtVkV8j83voAz2D8fhw==}
+    dependencies:
+      '@types/history': 4.7.11
+      '@types/react': 18.2.57
+      '@types/react-router': 5.1.20
+    dev: true
+
+  /@types/react-router@5.1.20:
+    resolution: {integrity: sha512-jGjmu/ZqS7FjSH6owMcD5qpq19+1RS9DeVRqfl1FeBMxTDQAGwlMWOcs52NDoXaNKyG3d1cYQFMs9rCrb88o9Q==}
+    dependencies:
+      '@types/history': 4.7.11
       '@types/react': 18.2.57
     dev: true
 
@@ -5077,6 +5188,27 @@ packages:
     dependencies:
       react: 18.2.0
     dev: false
+
+  /react-router-dom@6.22.1(react-dom@18.2.0)(react@18.2.0):
+    resolution: {integrity: sha512-iwMyyyrbL7zkKY7MRjOVRy+TMnS/OPusaFVxM2P11x9dzSzGmLsebkCvYirGq0DWB9K9hOspHYYtDz33gE5Duw==}
+    engines: {node: '>=14.0.0'}
+    peerDependencies:
+      react: '>=16.8'
+      react-dom: '>=16.8'
+    dependencies:
+      '@remix-run/router': 1.15.1
+      react: 18.2.0
+      react-dom: 18.2.0(react@18.2.0)
+      react-router: 6.22.1(react@18.2.0)
+
+  /react-router@6.22.1(react@18.2.0):
+    resolution: {integrity: sha512-0pdoRGwLtemnJqn1K0XHUbnKiX0S4X8CgvVVmHGOWmofESj31msHo/1YiqcJWK7Wxfq2a4uvvtS01KAQyWK/CQ==}
+    engines: {node: '>=14.0.0'}
+    peerDependencies:
+      react: '>=16.8'
+    dependencies:
+      '@remix-run/router': 1.15.1
+      react: 18.2.0
 
   /react@18.2.0:
     resolution: {integrity: sha512-/3IjMdb2L9QbBdWiW5e3P2/npwMBaU9mHCSCUzNln0ZCYbcfTsGbTJrU/kGemdH2IWmB2ioZ+zkxtmq6g09fGQ==}

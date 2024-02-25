@@ -83,6 +83,10 @@ importers:
         version: 4.15.1(webpack-cli@4.10.0)(webpack@5.90.3)
 
   packages/ui-kit:
+    dependencies:
+      react-icons:
+        specifier: ^5.0.1
+        version: 5.0.1(react@18.2.0)
     devDependencies:
       '@types/react':
         specifier: ^18.2.55
@@ -4877,6 +4881,14 @@ packages:
       loose-envify: 1.4.0
       react: 18.2.0
       scheduler: 0.23.0
+
+  /react-icons@5.0.1(react@18.2.0):
+    resolution: {integrity: sha512-WqLZJ4bLzlhmsvme6iFdgO8gfZP17rfjYEJ2m9RsZjZ+cc4k1hTzknEz63YS1MeT50kVzoa1Nz36f4BEx+Wigw==}
+    peerDependencies:
+      react: '*'
+    dependencies:
+      react: 18.2.0
+    dev: false
 
   /react@18.2.0:
     resolution: {integrity: sha512-/3IjMdb2L9QbBdWiW5e3P2/npwMBaU9mHCSCUzNln0ZCYbcfTsGbTJrU/kGemdH2IWmB2ioZ+zkxtmq6g09fGQ==}

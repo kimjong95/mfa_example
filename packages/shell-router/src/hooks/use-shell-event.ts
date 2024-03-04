@@ -1,34 +1,39 @@
 import { useEffect } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
 
-export default function useAppEvent(type: string) {
-  const navigate = useNavigate();
+export default function useShellEvent(type: string, basename: string) {
   const location = useLocation();
+  const navigate = useNavigate();
 
   useEffect(() => {
-    function shellNavigationHandler(event: Event) {
+    const appNavigationEventHandler = (event: Event) => {
       const pathname = (event as CustomEvent<string>).detail;
+      const newPathname =
+        pathname === "/" ? basename : `${basename}${pathname}`;
 
-      if (location.pathname === pathname) {
+      if (newPathname === location.pathname) {
         return;
       }
 
-      navigate(pathname);
-    }
-
-    window.addEventListener(`[app-shell] navigated`, shellNavigationHandler);
+      navigate(newPathname);
+    };
+    window.addEventListener(`[${type}] navigated`, appNavigationEventHandler);
 
     return () => {
       window.removeEventListener(
-        `[app-shell] navigated`,
-        shellNavigationHandler
+        `[${type}] navigated`,
+        appNavigationEventHandler
       );
     };
-  }, [location, navigate]);
+  }, [basename, location, navigate, type]);
 
   useEffect(() => {
-    window.dispatchEvent(
-      new CustomEvent(`[${type}] navigated`, { detail: location.pathname })
-    );
-  }, [location, type]);
+    if (location.pathname.startsWith(basename)) {
+      window.dispatchEvent(
+        new CustomEvent("[app-shell] navigated", {
+          detail: location.pathname.replace(basename, ""),
+        })
+      );
+    }
+  }, [basename, location]);
 }

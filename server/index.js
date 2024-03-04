@@ -6,7 +6,6 @@ const middlewares = jsonServer.defaults();
 const AUTH0_DOMAIN = "dev-mbj5hlgbhhh81q73.us.auth0.com";
 
 server.use(middlewares);
-
 server.use(async (req, res, next) => {
   if (await isAuthorized(req)) {
     next();
@@ -36,15 +35,18 @@ server.listen(4000, () => {
 
 async function isAuthorized(req) {
   try {
-    const Authorization = req.headers.Authorization;
+    const Authorization = req.headers.authorization;
 
     const res = await fetch(`https://${AUTH0_DOMAIN}/userinfo`, {
       headers: {
         Authorization,
       },
     });
+
     const json = await res.json();
+
     req.user = json;
+
     return true;
   } catch (e) {
     return false;

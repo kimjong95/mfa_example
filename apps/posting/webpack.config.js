@@ -2,6 +2,7 @@
 
 const HtmlWebPackPlugin = require("html-webpack-plugin");
 const ModuleFederationPlugin = require("webpack/lib/container/ModuleFederationPlugin");
+const Dotenv = require("dotenv-webpack");
 
 const deps = require("./package.json").dependencies;
 module.exports = (_, argv) => ({
@@ -42,6 +43,7 @@ module.exports = (_, argv) => ({
   },
 
   plugins: [
+    new Dotenv(),
     new ModuleFederationPlugin({
       name: "posting",
       filename: "remoteEntry.js",
@@ -63,6 +65,9 @@ module.exports = (_, argv) => ({
           singleton: true,
         },
         "@career-up/ui-kit": {
+          singleton: true,
+        },
+        "@auth0/auth0-react": {
           singleton: true,
         },
       },

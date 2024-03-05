@@ -6,6 +6,9 @@ logs
 **/*.back.*
 
 node_modules
+.turbo
+.env
+
 bower_components
 
 *.sublime*

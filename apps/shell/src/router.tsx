@@ -6,9 +6,10 @@ import {
 } from "react-router-dom";
 import Layout from "./components/Layout";
 import { Auth0ProviderWithNavigator } from "./components/auto0-provider-with-navigator";
-import { appPostingBasename } from "./constants/prefix";
+import { appEduBasename, appPostingBasename } from "./constants/prefix";
 
 const AppPostingLazy = React.lazy(() => import("./components/app-posting"));
+const AppEduLazy = React.lazy(() => import("./components/app-edu"));
 
 const browserRouter = createBrowserRouter([
   {
@@ -28,6 +29,14 @@ const browserRouter = createBrowserRouter([
         element: (
           <Suspense fallback="Loading Posting...">
             <AppPostingLazy />
+          </Suspense>
+        ),
+      },
+      {
+        path: `${appEduBasename}/*`,
+        element: (
+          <Suspense fallback="Loading Posting...">
+            <AppEduLazy />
           </Suspense>
         ),
       },

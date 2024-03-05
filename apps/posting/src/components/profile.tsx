@@ -1,13 +1,13 @@
 import "./profile.scss";
 
+import { useAuth0Client } from "@career-up/shell-router";
 import React, { useEffect, useState } from "react";
 import { getUser } from "../apis";
-import useAuth0Client from "../providers/use-auth0-client";
 import { type UserType } from "../types";
 
 const Profile = () => {
-  const auth0Client = useAuth0Client();
   const [user, setUser] = useState<UserType | null>(null);
+  const auth0Client = useAuth0Client();
 
   useEffect(() => {
     (async () => {

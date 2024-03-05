@@ -1,9 +1,9 @@
+import { useAuth0Client } from "@career-up/shell-router";
 import React, { useEffect, useState } from "react";
 import { createPost, getPosts, removePost } from "../apis";
 import Post from "../components/post";
 import Profile from "../components/profile";
 import WritePost from "../components/write-post";
-import useAuth0Client from "../providers/use-auth0-client";
 import { PostType } from "../types";
 import "./page-home.scss";
 

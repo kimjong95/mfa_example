@@ -1,9 +1,9 @@
+import { useAuth0Client } from "@career-up/shell-router";
 import React, { useCallback } from "react";
 import { useRecoilState } from "recoil";
 import { getConnections } from "../apis";
 import { connectionsAtom } from "../atoms";
 import Connections from "../components/connections";
-import useAuth0Client from "../hooks/use-auto0-client";
 
 const ConnectionsContainer: React.FC = () => {
   const auth0Client = useAuth0Client();

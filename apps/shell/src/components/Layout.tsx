@@ -1,4 +1,5 @@
 import { useAuth0 } from "@auth0/auth0-react";
+import { useShellNavigateListener } from "@career-up/shell-router";
 import { Button, Icon } from "@career-up/ui-kit";
 import React from "react";
 import { Link, NavLink, Outlet } from "react-router-dom";
@@ -11,6 +12,7 @@ import {
 } from "../constants/prefix";
 
 const Layout = () => {
+  useShellNavigateListener();
   const { isAuthenticated, loginWithRedirect, logout } = useAuth0();
 
   const handleLogin = async () => {

@@ -1,5 +1,6 @@
 // career-up/apps/edu/src/pages/page-detail.tsx
 
+import { useAuth0Client } from "@career-up/shell-router";
 import { useAtomValue } from "jotai";
 import { selectAtom } from "jotai/utils";
 import React, { useEffect, useMemo, useState } from "react";
@@ -9,7 +10,6 @@ import { coursesAtom } from "../atoms";
 import CourseActions from "../components/course-actions";
 import CourseContents from "../components/course-contents";
 import CourseDetailItem from "../components/course-detail-item";
-import useAuth0Client from "../providers/use-auth0-client";
 import { type CourseContentsType } from "../types";
 
 const PageDetail = () => {

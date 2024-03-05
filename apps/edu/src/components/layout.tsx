@@ -1,12 +1,12 @@
 // career-up/apps/edu/src/components/layout.tsx
 
+import { useAuth0Client } from "@career-up/shell-router";
 import { useSetAtom } from "jotai";
 import React, { useEffect } from "react";
 import { getCourses, getUser } from "../apis";
 import { coursesAtom, userAtom } from "../atoms";
 import MyCourseInfoContainer from "../containers/my-course-info-container";
 import ProfileContainer from "../containers/profile-container";
-import useAuth0Client from "../providers/use-auth0-client";
 import { LayoutWrapper } from "./layout.styles";
 
 const Layout: React.FC<React.PropsWithChildren> = ({ children }) => {

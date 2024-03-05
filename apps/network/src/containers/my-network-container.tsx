@@ -1,9 +1,9 @@
+import { useAuth0Client } from "@career-up/shell-router";
 import React, { useCallback } from "react";
 import { useRecoilState } from "recoil";
 import { getMyNetwork } from "../apis";
 import { myNetworkAtom } from "../atoms";
 import MyNetwork from "../components/my-network";
-import useAuth0Client from "../hooks/use-auto0-client";
 
 const MyNetworkContainer: React.FC = () => {
   const auth0Client = useAuth0Client();

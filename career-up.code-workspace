@@ -15,6 +15,10 @@
       "path": "apps/edu"
     },
     {
+      "name": "network",
+      "path": "apps/network"
+    },
+    {
       "name": "shell-router",
       "path": "packages/shell-router"
     },

@@ -1,6 +1,7 @@
 import React, { useEffect } from "react";
 import { ConnectionType } from "../types";
 import Connection from "./connection";
+import "./recommend-connections.css";
 
 interface RecommendConnectionsProps {
   connections: ConnectionType[];

@@ -1,5 +1,7 @@
 import { useAuth0Client } from "@career-up/shell-router";
+import { importRemote } from "@module-federation/utilities";
 import React, { Suspense, useEffect, useState } from "react";
+import { ErrorBoundary } from "react-error-boundary";
 import { createPost, getPosts, removePost } from "../apis";
 import Post from "../components/post";
 import Profile from "../components/profile";
@@ -7,11 +9,21 @@ import WritePost from "../components/write-post";
 import { PostType } from "../types";
 import "./page-home.scss";
 
-const RecommendConnectionsContainer = React.lazy(
-  () => import("fragment_recommend_connections/container")
+const RecommendConnectionsContainer = React.lazy(() =>
+  importRemote({
+    url: "http://localhost:5001",
+    scope: "fragment_recommend_connections",
+    module: "container",
+    remoteEntryFileName: `remoteEntry.js?v=${Date.now()}`,
+  })
 );
-const RecommendJobsContainer = React.lazy(
-  () => import("job/fragment-recommend-jobs")
+const RecommendJobsContainer = React.lazy(() =>
+  importRemote({
+    url: "http://localhost:3004",
+    scope: "job",
+    module: "fragment-recommend-jobs",
+    remoteEntryFileName: `remoteEntry.js?v=${Date.now()}`,
+  })
 );
 
 const PageHome: React.FC = () => {
@@ -68,12 +80,16 @@ const PageHome: React.FC = () => {
         ))}
       </div>
       <div className="posting--page-home-right">
-        <Suspense fallback={<div>Loading...</div>}>
-          <RecommendConnectionsContainer />
-        </Suspense>
-        <Suspense fallback={<div>Loading...</div>}>
-          <RecommendJobsContainer />
-        </Suspense>
+        <ErrorBoundary fallback={<div>Error</div>}>
+          <Suspense fallback={<div>Loading...</div>}>
+            <RecommendConnectionsContainer />
+          </Suspense>
+        </ErrorBoundary>
+        <ErrorBoundary fallback={<div>Error</div>}>
+          <Suspense fallback={<div>Loading...</div>}>
+            <RecommendJobsContainer />
+          </Suspense>
+        </ErrorBoundary>
       </div>
     </div>
   );

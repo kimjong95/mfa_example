@@ -1,5 +1,5 @@
-import { useShellEvent } from "@career-up/shell-router";
-import inject from "job/injector";
+import { useShellEvent, type InjectFuncType } from "@career-up/shell-router";
+import { importRemote } from "@module-federation/utilities";
 import React, { useEffect, useRef } from "react";
 import { useLocation } from "react-router-dom";
 import { appJobBasename } from "../constants/prefix";
@@ -17,12 +17,23 @@ export default function AppJob() {
     if (!isFirstRunRef.current) {
       return;
     }
-    unmountRef.current = inject({
-      routerType: "memory",
-      rootElement: wrapperRef.current!,
-      basePath: location.pathname.replace(appJobBasename, ""),
-    });
     isFirstRunRef.current = false;
+    importRemote<{ default: InjectFuncType }>({
+      url: "http://localhost:3004",
+      scope: "job",
+      module: "injector",
+      remoteEntryFileName: "remoteEntry.js",
+    })
+      .then(({ default: inject }) => {
+        unmountRef.current = inject({
+          routerType: "memory",
+          rootElement: wrapperRef.current!,
+          basePath: location.pathname.replace(appJobBasename, ""),
+        });
+      })
+      .catch((error) => {
+        console.error(error);
+      });
   }, [location]);
 
   useEffect(() => unmountRef.current, []);

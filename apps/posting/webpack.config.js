@@ -3,6 +3,7 @@
 const HtmlWebPackPlugin = require("html-webpack-plugin");
 const ModuleFederationPlugin = require("webpack/lib/container/ModuleFederationPlugin");
 const Dotenv = require("dotenv-webpack");
+const { error } = require("console");
 
 const deps = require("./package.json").dependencies;
 module.exports = (_, argv) => ({
@@ -17,6 +18,13 @@ module.exports = (_, argv) => ({
   devServer: {
     port: 3001,
     historyApiFallback: true,
+    client: {
+      overlay: {
+        errors: true,
+        warnings: false,
+        runtimeErrors: true,
+      },
+    },
   },
 
   module: {
@@ -66,6 +74,7 @@ module.exports = (_, argv) => ({
         },
         "@career-up/ui-kit": {
           singleton: true,
+          shareScope: "v2",
         },
         "@auth0/auth0-react": {
           singleton: true,

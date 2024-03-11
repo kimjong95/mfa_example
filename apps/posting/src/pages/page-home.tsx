@@ -4,8 +4,8 @@ import React, { Suspense, useEffect, useState } from "react";
 import { ErrorBoundary } from "react-error-boundary";
 import { createPost, getPosts, removePost } from "../apis";
 import Post from "../components/post";
-import Profile from "../components/profile";
 import WritePost from "../components/write-post";
+import ProfileContainer from "../containers/ProfileContainer";
 import { PostType } from "../types";
 import "./page-home.scss";
 
@@ -71,7 +71,7 @@ const PageHome: React.FC = () => {
   return (
     <div className="posting--page-home">
       <div className="posting--page-home-left">
-        <Profile />
+        <ProfileContainer />
       </div>
       <div className="posting--page-home-center">
         <WritePost writePost={writePost} />
